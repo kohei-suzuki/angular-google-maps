@@ -134,8 +134,9 @@ export interface MapOptions {
   streetViewControl?: boolean;
   scaleControl?: boolean;
   mapTypeControl?: boolean;
+  fullscreenControl?: boolean;
   clickableIcons?: boolean;
-  gestureHandling?: string;
+  gestureHandling?: 'cooperative'|'greedy'|'none'|'auto';
 }
 
 export interface MapTypeStyle {

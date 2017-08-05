@@ -48,7 +48,7 @@ import {KmlLayerManager} from './../services/managers/kml-layer-manager';
     'longitude', 'latitude', 'zoom', 'minZoom', 'maxZoom', 'draggable: mapDraggable',
     'disableDoubleClickZoom', 'disableDefaultUI', 'scrollwheel', 'backgroundColor', 'draggableCursor',
     'draggingCursor', 'keyboardShortcuts', 'zoomControl', 'styles', 'usePanning', 'streetViewControl',
-    'fitBounds', 'scaleControl', 'mapTypeControl', 'clickableIcons', 'gestureHandling'
+    'fitBounds', 'scaleControl', 'mapTypeControl', 'fullscreenControl', 'clickableIcons', 'gestureHandling'
   ],
   outputs: [
     'mapClick', 'mapRightClick', 'mapDblClick', 'centerChange', 'idle', 'boundsChange', 'zoomChange'
@@ -188,6 +188,11 @@ export class SebmGoogleMap implements OnChanges, OnInit, OnDestroy {
   mapTypeControl: boolean = false;
 
   /**
+   * The initial enabled/disabled state of the Fullscreen control.
+   */
+  fullscreenControl: boolean  = false;
+
+  /**
    * When false, map icons are not clickable. A map icon represents a point of interest,
    * also known as a POI. By default map icons are clickable.
    */
@@ -209,7 +214,7 @@ export class SebmGoogleMap implements OnChanges, OnInit, OnDestroy {
   private static _mapOptionsAttributes: string[] = [
     'disableDoubleClickZoom', 'scrollwheel', 'draggable', 'draggableCursor', 'draggingCursor',
     'keyboardShortcuts', 'zoomControl', 'styles', 'streetViewControl', 'zoom', 'mapTypeControl',
-    'minZoom', 'maxZoom', 'clickableIcons', 'gestureHandling'
+    'minZoom', 'maxZoom', 'fullscreenControl', 'clickableIcons', 'gestureHandling'
   ];
 
   private _observableSubscriptions: Subscription[] = [];
@@ -278,6 +283,7 @@ export class SebmGoogleMap implements OnChanges, OnInit, OnDestroy {
       streetViewControl: this.streetViewControl,
       scaleControl: this.scaleControl,
       mapTypeControl: this.mapTypeControl,
+      fullscreenControl: this.fullscreenControl,
       clickableIcons: this.clickableIcons,
       gestureHandling: this.gestureHandling
     });
